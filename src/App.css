@@ -3,8 +3,21 @@
   color: lightgreen;
   height: 60px;
   margin: 0;
-  padding: 0;
+  padding: auto;
   text-align: center;
   font-family: Algerian;
   font-size: 45px;
+}
+
+.button {
+
+}
+
+.people {
+  margin: 5px 0 ;
+  background-color: slategray;
+  border-radius: 5px;
+  color: lightgreen;
+  width: 170px;
+  text-align: center;
 }
