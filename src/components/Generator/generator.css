@@ -1,0 +1,12 @@
+.button {
+    width: 65px;
+    height: 30px;
+    outline: none;
+    border: 5px solid black;
+    font-family: "Lucida Sans Unicode";
+    transform: revert;
+}
+.button:hover {
+    box-shadow: 3px 3px darkgreen;
+    transition: all .5s ease;
+}
