@@ -4,22 +4,17 @@ import names from './jsons/firstname.json'
 import surnames from './jsons/lastname.json'
 import ages from './jsons/ages.json'
 import streets from './jsons/streets.json'
-import {link} from "fs";
 
 class App extends React.Component{
   state = {
     peoples: [
       {
-        name: "Ivan",
-        surname: "Ivanov",
-        street: "comarskaya",
-        age: "12"
+        name: "NAME",
+        surname: "SURNAME",
+        street: "STREET",
+        age: "AGE"
       }
     ],
-    name: null,
-    surname: null,
-    age: null,
-    street: null
   };
 
   getRandom = (list: Array<any>) => {
@@ -27,51 +22,24 @@ class App extends React.Component{
     return list[randId];
   };
 
-  getRandomName = () => {
-    this.setState({
-      name: this.getRandom(names)
-    })
-  };
-  getRandomSurname = () => {
-    this.setState({
-      surname: this.getRandom(surnames)
-    })
-  };
-  getRandomAge = () => {
-    this.setState({
-      age: this.getRandom(ages)
-    })
-  };
-
-  getRandomStreet = () => {
-    this.setState({
-      street: this.getRandom(streets)
-    })
-  };
+  getRandomName = () => this.getRandom(names);
+  getRandomSurname = () => this.getRandom(surnames);
+  getRandomAge = () => this.getRandom(ages);
+  getRandomStreet = () => this.getRandom(streets);
+  handleClicked = () => this.createPeople();
 
   createPeople = () => {
-    this.getRandomName();
-    this.getRandomSurname();
-    this.getRandomAge();
-    this.getRandomStreet();
-
-    if(this.state.street !== null){
       this.setState({
-        peoples:[
-          ...this.state.peoples,
-          {
-            name: this.state.name,
-            surname: this.state.surname,
-            age: this.state.age,
-            street: this.state.street,
-          }
-        ]
+          peoples:[
+              ...this.state.peoples,
+              {
+                  name: this.getRandomName(),
+                  surname: this.getRandomSurname(),
+                  age: this.getRandomAge(),
+                  street: this.getRandomStreet(),
+              }
+          ]
       })
-    }
-  }
-
-  handleClicked = () => {
-    this.createPeople();
   };
   render(): React.ReactElement<any, string | React.JSXElementConstructor<any>> | string | number | {} | React.ReactNodeArray | React.ReactPortal | boolean | null | undefined {
     const peoples: Array<object> = this.state.peoples.map((people) => (
