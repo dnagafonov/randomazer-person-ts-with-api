@@ -2,13 +2,13 @@
     height: 100px;
     width: 200px;
     margin: 5px;
+    padding: auto;
     background-color: slategray;
     border-radius: 5px;
-    color: lightgreen;
-    box-shadow: 5px 5px lightgreen;
+    color: #FF867D;
+    box-shadow: 0 0 3px black;
     transition: all .5s ease;
     display: inline-block;
     font-family: "Microsoft PhagsPa";
     font-weight: bold;
-    flex-direction: column;
 }

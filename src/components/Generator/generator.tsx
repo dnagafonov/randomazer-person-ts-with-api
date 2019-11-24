@@ -54,8 +54,10 @@ export default class Generator extends Component {
                         <div className="header-text">Radnomize</div>
                         <button className="button" onClick={this.handleClick}><i className="fa fa-random"/></button>
                     </div>
-                    <div className="flexbox">
-                        {people}
+                    <div className="backgroundFlexBox">
+                        <div className="flexbox">
+                            {people}
+                        </div>
                     </div>
                 </div>
             </header>

@@ -1,6 +1,6 @@
 .header {
     background-color: slategray;
-    color: lightgreen;
+    color: #FF867D;
     height: 60px;
     margin: 0;
     padding: auto;
@@ -23,7 +23,7 @@
     left: 300px;
     bottom: 8px;
     font-family: "Lucida Sans Unicode";
-    background-color: rgb(144,238,144);
+    background-color: #FF867D;
 }
 .button:hover {
     background-color: rgb(125, 245, 125);
@@ -31,12 +31,22 @@
     transition: all .5s ease;
 }
 .flexbox {
+    position: relative;
+    left: 34%;
+    top: 70px;
+    border-radius: 3px;
     display: flex;
-    list-style-type: none;
+    flex-direction: row;
+    flex-wrap: wrap;
+    overflow: auto;
     text-align: center;
     height: 500px;
-    width: 500px;
-    margin: 0;
-    padding: 0;
-
+    width: 450px;
+    background-color: rgba(0,0,0, .2);
+    justify-content: center;
+}
+.backgroundFlexBox {
+    background-color: lightcyan;
+    height: 100vh;
+    background-image: url("../../pictures/color-strips-linii-background-fon.jpg");
 }
