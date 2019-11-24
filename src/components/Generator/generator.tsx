@@ -48,17 +48,17 @@ export default class Generator extends Component {
             </div> ));
 
         return (
-            <div>
+            <header>
                 <div>
                     <div className="header">
-                        Radnomize
-                        <button className="button" onClick={this.handleClick}>click</button>
+                        <div className="header-text">Radnomize</div>
+                        <button className="button" onClick={this.handleClick}><i className="fa fa-random"/></button>
                     </div>
-                    <div style={{listStyleType: "none", textAlign: "center"}}>
+                    <div className="flexbox">
                         {people}
                     </div>
                 </div>
-            </div>
+            </header>
         );
     }
 }

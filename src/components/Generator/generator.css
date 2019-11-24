@@ -1,12 +1,42 @@
+.header {
+    background-color: slategray;
+    color: lightgreen;
+    height: 60px;
+    margin: 0;
+    padding: auto;
+    text-align: center;
+}
+.header-text {
+    font-family: "Algerian";
+    font-size: 45px;
+    display: inline-block;
+    position: relative;
+    left: 30px;
+}
 .button {
-    width: 65px;
-    height: 30px;
+    width: 40px;
+    height: 40px;
     outline: none;
-    border: 5px solid black;
+    border: 3px solid black;
+    border-radius: 2vw;
+    position: relative;
+    left: 300px;
+    bottom: 8px;
     font-family: "Lucida Sans Unicode";
-    transform: revert;
+    background-color: rgb(144,238,144);
 }
 .button:hover {
-    box-shadow: 3px 3px darkgreen;
+    background-color: rgb(125, 245, 125);
+    box-shadow: 0 0 7px black;
     transition: all .5s ease;
+}
+.flexbox {
+    display: flex;
+    list-style-type: none;
+    text-align: center;
+    height: 500px;
+    width: 500px;
+    margin: 0;
+    padding: 0;
+
 }

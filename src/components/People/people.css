@@ -1,11 +1,14 @@
 .people {
-    margin: 5px 0 ;
+    height: 100px;
+    width: 200px;
+    margin: 5px;
     background-color: slategray;
     border-radius: 5px;
     color: lightgreen;
-    width: 170px;
-    text-align: center;
     box-shadow: 5px 5px lightgreen;
     transition: all .5s ease;
     display: inline-block;
+    font-family: "Microsoft PhagsPa";
+    font-weight: bold;
+    flex-direction: column;
 }
