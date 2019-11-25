@@ -10,9 +10,9 @@ interface PeopleProps {
 
 const People = ({name, surname, age, street} : PeopleProps) => (
     <div className="people">
-            <div>{surname + " " + name}</div>
-            <div>Age: {age}</div>
-            <div>Street: {street}</div>
+            <div className="name">{surname + " " + name}</div>
+            <div className="age">Age: {age}</div>
+            <div className="geoposition">Street: {street}</div>
     </div>
 );
 

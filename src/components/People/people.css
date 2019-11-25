@@ -1,6 +1,6 @@
 .people {
-    height: 68px;
-    width: 200px;
+    height: 380px;
+    width: 415px;
     margin: 10px 5px;
     padding: auto;
     background-color: slategray;
@@ -11,4 +11,11 @@
     display: inline-block;
     font-family: "Microsoft PhagsPa";
     font-weight: bold;
+    font-size: 20px;
+}
+.geoposition {
+
+}
+.age {
+
 }
