@@ -24,7 +24,7 @@
     border: 3px solid black;
     border-radius: 2vw;
     position: relative;
-    left: 470px;
+    left: 350px;
     bottom: 10px;
     font-family: "Lucida Sans Unicode";
     background-color: #FF867D;
@@ -38,13 +38,13 @@
 .flexbox {
     position: relative;
     left: 33%;
-    top: 60px;
+    top: 100px;
     border-radius: 3px;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
     overflow-y: scroll;
-    height: 400px;
+    height: 250px;
     width: 450px;
     background-color: rgba(0,0,0, .2);
     justify-content: center;

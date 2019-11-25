@@ -1,9 +1,9 @@
 .people {
-    height: 380px;
-    width: 415px;
+    height: 230px;
+    width: 420px;
     margin: 10px 5px;
     padding: auto;
-    background-color: slategray;
+    background-color: ghostwhite;
     border-radius: 5px;
     color: #FF867D;
     box-shadow: 0 0 3px black;
@@ -11,11 +11,32 @@
     display: inline-block;
     font-family: "Microsoft PhagsPa";
     font-weight: bold;
+    font-size: 14px;
+}
+.header-licence {
+    height: 30px;
+    background-color: #CCCCCC;
+    text-align: right;
+    padding: 0 10px;
+    border-radius: 3px 3px 0 0;
     font-size: 20px;
+    color: black;
 }
-.geoposition {
 
+.licence-general-information-block {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
 }
-.age {
 
+.licence-information {
+    margin: 20px;
+    color: black;
+}
+
+.licence-image {
+    background-color: darkslategrey;
+    height: 130px;
+    width: 100px;
+    margin: 30px 0 0 10px;
 }
