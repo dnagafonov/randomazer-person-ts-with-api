@@ -14,7 +14,8 @@ export default class Generator extends Component {
                 name: "NAME",
                 surname: "SURNAME",
                 age: "YOUR_AGE",
-                street: "STREET"
+                street: "STREET",
+                country: "COUNTRY",
             }
         ]
     };
@@ -32,7 +33,7 @@ export default class Generator extends Component {
                     name: this.getRandomName(),
                     surname: this.getRandomSurnames(),
                     age: this.getRandomAge(),
-                    street: this.getRandomStreet()
+                    street: this.getRandomStreet(),
                 }
             ]
         })
@@ -52,12 +53,12 @@ export default class Generator extends Component {
                 <div>
                     <div className="header">
                         <div className="header-text">Randomize</div>
-                        <button className="button" onClick={this.handleClick}><i className="fa fa-random"/></button>
                     </div>
                     <div className="backgroundFlexBox">
                         <div className="flexbox style-1">
                             {people}
                         </div>
+                        <button className="button" onClick={this.handleClick}><i className="fa fa-random"/></button>
                     </div>
                 </div>
             </header>

@@ -1,44 +1,38 @@
 .header {
     background-color: slategray;
-    color: #FF867D;
+    color: #C9EEF7;
     height: 60px;
     margin: 0;
     padding: auto;
     text-align: center;
+    position: sticky;
+    top: 0;
 }
 .header-text {
     font-family: "Algerian";
     font-size: 45px;
     display: inline-block;
-    position: relative;
-    left: 30px;
 }
 .header-text:hover{
-    color: crimson;
+    color: #EBFAFF;
     transition: all .5s ease;
 }
 .button {
     width: 40px;
-    height: 40px;
+    height: 250px;
     outline: none;
     border: 3px solid black;
-    border-radius: 2vw;
-    position: relative;
-    left: 350px;
-    bottom: 10px;
+    border-radius: 0 20px 20px 0;
     font-family: "Lucida Sans Unicode";
-    background-color: #FF867D;
+    background-color: #EBFAFF;
 }
 .button:hover {
-    background-color: crimson;
-    box-shadow: 0 0 7px black;
+    background-color: #C9EEF7;
+    box-shadow: 0 0 2px black;
     transition: all .5s ease;
 }
 
 .flexbox {
-    position: relative;
-    left: 33%;
-    top: 100px;
     border-radius: 3px;
     display: flex;
     flex-direction: row;
@@ -50,10 +44,16 @@
     justify-content: center;
 }
 .backgroundFlexBox {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
     background-color: lightcyan;
-    height: 90vh;
+    height: 100vh;
+    min-height: 30%;
     background-repeat: no-repeat;
     background-size: cover;
+    background-attachment: fixed;
     background-image: url("../../pictures/color-strips-linii-background-fon.jpg");
 }
 
@@ -71,6 +71,6 @@
 
 .style-1::-webkit-scrollbar-thumb
 {
-    background-color: #FF867D;
-    border-radius: 3px;
+    background-color: #C9EEF7;
+    border: 1px solid black;
 }
