@@ -1,11 +1,23 @@
 import React, { Component } from 'react';
-import names from '../../assets/name.json'
-import surnames from '../../assets/secondname.json'
-import ages from '../../assets/age.json'
-import streets from '../../assets/streets.json'
 import './generator.css';
 import getRandom from "../Random/random";
 import People from "../People/people";
+import myAxios from "../../myAxios"
+import axios from 'axios'
+import {getInformation} from "../api-service/api-service";
+import {InformationEvent} from "http";
+
+interface Information {
+    name: string,
+    surname: string,
+    last: string,
+    gender: string,
+    dob: string,
+    date: string,
+    city: string,
+    id: string,
+    picture: string
+}
 
 export default class Generator extends Component {
     state = {
@@ -19,22 +31,27 @@ export default class Generator extends Component {
             }
         ]
     };
+    componentDidMount(): void {
+        getInformation().then((res) => {
+            this.setState({
+                name: res.name,
+                surname: res.name,
 
-    getRandomName = () => getRandom(names);
-    getRandomSurnames = () => getRandom(surnames);
-    getRandomAge = () => getRandom(ages);
-    getRandomStreet = () => getRandom(streets);
+
+            })
+        });
+    }
 
     createPeople = () => {
         this.setState({
             people: [
                 ...this.state.people,
-                {
-                    name: this.getRandomName(),
-                    surname: this.getRandomSurnames(),
-                    age: this.getRandomAge(),
-                    street: this.getRandomStreet(),
-                }
+                // {
+                //     name: this.getRandomName(),
+                //     surname: this.getRandomSurnames(),
+                //     age: this.getRandomAge(),
+                //     street: this.getRandomStreet(),
+                // }
             ]
         })
     };
@@ -43,8 +60,8 @@ export default class Generator extends Component {
 
     render(): React.ReactElement<any, string | React.JSXElementConstructor<any>> | string | number | {} | React.ReactNodeArray | React.ReactPortal | boolean | null | undefined {
 
-        const people: Array<object> = this.state.people.map((people) => (
-            <div>
+        const people: Array<object> = this.state.people.map((people, id) => (
+            <div key={id}>
                 <People name={people.name} surname={people.surname} street={people.street} age={people.age}/>
             </div> ));
 
