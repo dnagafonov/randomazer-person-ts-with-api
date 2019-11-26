@@ -4,6 +4,7 @@ import Person from "../People/person";
 import {getInformation} from "../api-service/api-service";
 import {convertDate} from "../util/convertDate";
 import Spinner from "../spinner/spinner"
+import Button from "../buttons/buttons";
 
 interface Information {
     people: Array<object>;
@@ -20,7 +21,7 @@ export default class Generator extends Component {
                 yStreet: "STREET",
                 yCountry: "COUNTRY",
                 yPicture: "../../pictures/user",
-            }
+            },
         ],
         loading: false
     };
@@ -49,11 +50,27 @@ export default class Generator extends Component {
         });
     };
 
-    handleClick = () => {
+    addPersonClicked = () => {
         this.setState({
             loading: true
-        })
+        });
         this.createPeople();
+    };
+
+    cleanClicked = () => {
+        this.setState({
+            people:[
+                {
+                    yName: "NAME",
+                    yGender: "GENDER",
+                    ySurname: "SURNAME",
+                    yBirthday: "YOUR_AGE",
+                    yStreet: "STREET",
+                    yCountry: "COUNTRY",
+                    yPicture: "../../pictures/user",
+                }
+            ]
+        })
     }
 
     render(): React.ReactElement<any, string | React.JSXElementConstructor<any>> | string | number | {} | React.ReactNodeArray | React.ReactPortal | boolean | null | undefined {
@@ -80,10 +97,11 @@ export default class Generator extends Component {
                         <div className="header-text">Randomize</div>
                     </div>
                     <div className="backgroundFlexBox">
+                        <Button classN="button-clear" onclick={this.cleanClicked}><i className="fa fa-ban"/></Button>
                         <div className="flexbox style-1">
                             {people}
                         </div>
-                        <button className="button" onClick={this.handleClick}><i className="fa fa-random"/></button>
+                        <Button classN="button-random" onclick={this.addPersonClicked}><i className="fa fa-random"/></Button>
                     </div>
                 </div>
             </header>
