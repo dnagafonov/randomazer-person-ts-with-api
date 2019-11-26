@@ -1,8 +1,9 @@
-import React, { Component } from 'react';
+import React, {Component, FunctionComponent} from 'react';
 import './generator.css';
-import People from "../People/people";
+import Person from "../People/person";
 import {getInformation} from "../api-service/api-service";
 import {convertDate} from "../util/convertDate";
+import Spinner from "../spinner/spinner"
 
 interface Information {
     people: Array<object>;
@@ -18,12 +19,13 @@ export default class Generator extends Component {
                 yBirthday: "YOUR_AGE",
                 yStreet: "STREET",
                 yCountry: "COUNTRY",
-                yPicture: "https://randomuser.me/api/portraits/men/69.jpg",
+                yPicture: "../../pictures/user",
             }
-        ]
+        ],
+        loading: false
     };
 
-    componentDidMount(): void {
+    createPeople = () => {
         getInformation().then((res) => {
             this.setState({
                 people: [
@@ -39,40 +41,37 @@ export default class Generator extends Component {
                         yGender: res.gender,
                         //@ts-ignore
                         yPicture: res.picture.large,
-
-                    }
-                ]
+                    },
+                ],
+                loading: false,
             } as Information);
             console.log(res);
         });
-    }
-
-    createPeople = () => {
-        this.setState({
-            people: [
-                ...this.state.people,
-                // {
-                //     name: this.getRandomName(),
-                //     surname: this.getRandomSurnames(),
-                //     age: this.getRandomAge(),
-                //     street: this.getRandomStreet(),
-                // }
-            ]
-        })
     };
 
-    handleClick = () => this.createPeople();
+    handleClick = () => {
+        this.setState({
+            loading: true
+        })
+        this.createPeople();
+    }
 
     render(): React.ReactElement<any, string | React.JSXElementConstructor<any>> | string | number | {} | React.ReactNodeArray | React.ReactPortal | boolean | null | undefined {
-
-        const people: Array<object> = this.state.people.map((people, id) => (
-            <div key={id}>
-                <People name={people.yName}
-                        surname={people.ySurname}
-                        street={people.yStreet}
-                        age={people.yBirthday}
-                        picture={people.yPicture}/>
-            </div> ));
+        let people: any = null;
+        if(this.state.loading){
+            people = <Spinner/>
+        }
+        else {
+             people = this.state.people.map((people, id) => (
+                <div key={id}>
+                    <Person name={people.yName}
+                            surname={people.ySurname}
+                            gender={people.yGender}
+                            street={people.yStreet}
+                            birthday={people.yBirthday}
+                            picture={people.yPicture}/>
+                </div> ));
+        }
 
         return (
             <header>
