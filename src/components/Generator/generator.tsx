@@ -1,44 +1,49 @@
 import React, { Component } from 'react';
 import './generator.css';
-import getRandom from "../Random/random";
 import People from "../People/people";
-import myAxios from "../../myAxios"
-import axios from 'axios'
 import {getInformation} from "../api-service/api-service";
-import {InformationEvent} from "http";
+import {convertDate} from "../util/convertDate";
 
 interface Information {
-    name: string,
-    surname: string,
-    last: string,
-    gender: string,
-    dob: string,
-    date: string,
-    city: string,
-    id: string,
-    picture: string
+    people: Array<object>;
 }
 
 export default class Generator extends Component {
     state = {
         people: [
             {
-                name: "NAME",
-                surname: "SURNAME",
-                age: "YOUR_AGE",
-                street: "STREET",
-                country: "COUNTRY",
+                yName: "NAME",
+                yGender: "GENDER",
+                ySurname: "SURNAME",
+                yBirthday: "YOUR_AGE",
+                yStreet: "STREET",
+                yCountry: "COUNTRY",
+                yPicture: "https://randomuser.me/api/portraits/men/69.jpg",
             }
         ]
     };
+
     componentDidMount(): void {
         getInformation().then((res) => {
             this.setState({
-                name: res.name,
-                surname: res.name,
+                people: [
+                    ...this.state.people,
+                    {
+                        //@ts-ignore
+                        yName: res.name.first,
+                        //@ts-ignore
+                        ySurname: res.name.last,
+                        //@ts-ignore
+                        yBirthday: convertDate(res.dob.date),
+                        //@ts-ignore
+                        yGender: res.gender,
+                        //@ts-ignore
+                        yPicture: res.picture.large,
 
-
-            })
+                    }
+                ]
+            } as Information);
+            console.log(res);
         });
     }
 
@@ -62,7 +67,11 @@ export default class Generator extends Component {
 
         const people: Array<object> = this.state.people.map((people, id) => (
             <div key={id}>
-                <People name={people.name} surname={people.surname} street={people.street} age={people.age}/>
+                <People name={people.yName}
+                        surname={people.ySurname}
+                        street={people.yStreet}
+                        age={people.yBirthday}
+                        picture={people.yPicture}/>
             </div> ));
 
         return (
