@@ -1,4 +1,4 @@
-import React, {Component, FunctionComponent} from 'react';
+import React, {Component} from 'react';
 import './generator.css';
 import Person from "../People/person";
 import {getInformation} from "../api-service/api-service";
@@ -19,8 +19,9 @@ export default class Generator extends Component {
                 ySurname: "SURNAME",
                 yBirthday: "YOUR_AGE",
                 yStreet: "STREET",
-                yCountry: "COUNTRY",
+                yCity: "CITY",
                 yPicture: "../../pictures/user",
+                yId: "ID"
             },
         ],
         loading: false
@@ -30,7 +31,6 @@ export default class Generator extends Component {
         getInformation().then((res) => {
             this.setState({
                 people: [
-                    ...this.state.people,
                     {
                         //@ts-ignore
                         yName: res.name.first,
@@ -42,7 +42,14 @@ export default class Generator extends Component {
                         yGender: res.gender,
                         //@ts-ignore
                         yPicture: res.picture.large,
+                        //@ts-ignore
+                        yStreet: res.location.street,
+                        //@ts-ignore
+                        yId: res.id.value,
+                        //@ts-ignore
+                        yCity: res.location.city,
                     },
+                    ...this.state.people,
                 ],
                 loading: false,
             } as Information);
@@ -68,6 +75,8 @@ export default class Generator extends Component {
                     yStreet: "STREET",
                     yCountry: "COUNTRY",
                     yPicture: "../../pictures/user",
+                    yId: "ID",
+                    yCity: "CITY",
                 }
             ]
         })
@@ -84,9 +93,11 @@ export default class Generator extends Component {
                     <Person name={people.yName}
                             surname={people.ySurname}
                             gender={people.yGender}
-                            street={people.yStreet}
                             birthday={people.yBirthday}
-                            picture={people.yPicture}/>
+                            picture={people.yPicture}
+                            street={people.yStreet}
+                            city={people.yCity}
+                            id={people.yId}/>
                 </div> ));
         }
 
@@ -97,7 +108,7 @@ export default class Generator extends Component {
                         <div className="header-text">Randomize</div>
                     </div>
                     <div className="backgroundFlexBox">
-                        <Button classN="button-clear" onclick={this.cleanClicked}><i className="fa fa-ban"/></Button>
+                        <Button classN="button-clear" onclick={this.cleanClicked}><i className="fa fa-ellipsis-v"/></Button>
                         <div className="flexbox style-1">
                             {people}
                         </div>
