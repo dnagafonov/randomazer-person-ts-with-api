@@ -19,8 +19,8 @@ const Person = ({name, surname, gender, birthday, street, city, id, picture} : P
         <div className="licence-general-information-block">
             <img className="licence-image" src={picture} alt=""/>
             <div className="licence-information">
-                <div>1. {surname} {name}</div>
-                <div>2. {gender}</div>
+                <div className="name-template">1. {surname} {name}</div>
+                <div className="name">2. {gender}</div>
                 <div>3. {id}</div>
                 <div>3. {birthday}</div>
                 <div>3. {city}</div>

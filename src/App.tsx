@@ -7,6 +7,6 @@ const App: React.FC = () => {
             <Generator/>
         </div>
     );
-}
+};
 
 export default App;

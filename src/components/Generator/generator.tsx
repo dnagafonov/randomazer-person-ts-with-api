@@ -5,6 +5,7 @@ import {getInformation} from "../api-service/api-service";
 import {convertDate} from "../util/convertDate";
 import Spinner from "../spinner/spinner"
 import Button from "../buttons/buttons";
+import {createId} from "../util/createId";
 
 interface Information {
     people: Array<object>;
@@ -20,7 +21,7 @@ export default class Generator extends Component {
                 yBirthday: "YOUR_AGE",
                 yStreet: "STREET",
                 yCity: "CITY",
-                yPicture: "../../pictures/user",
+                yPicture: "../../images/user",
                 yId: "ID"
             },
         ],
@@ -28,6 +29,8 @@ export default class Generator extends Component {
     };
 
     createPeople = () => {
+        // @ts-ignore
+        const id = createId();
         getInformation().then((res) => {
             this.setState({
                 people: [
@@ -43,9 +46,9 @@ export default class Generator extends Component {
                         //@ts-ignore
                         yPicture: res.picture.large,
                         //@ts-ignore
-                        yStreet: res.location.street,
+                        yStreet: res.location.street.name,
                         //@ts-ignore
-                        yId: res.id.value,
+                        yId: id,
                         //@ts-ignore
                         yCity: res.location.city,
                     },
@@ -74,7 +77,7 @@ export default class Generator extends Component {
                     yBirthday: "YOUR_AGE",
                     yStreet: "STREET",
                     yCountry: "COUNTRY",
-                    yPicture: "../../pictures/user",
+                    yPicture: "../../images/user",
                     yId: "ID",
                     yCity: "CITY",
                 }
@@ -88,9 +91,9 @@ export default class Generator extends Component {
             people = <Spinner/>
         }
         else {
-             people = this.state.people.map((people, id) => (
-                <div key={id}>
-                    <Person name={people.yName}
+             people = this.state.people.map(people => (
+                    <Person
+                            name={people.yName}
                             surname={people.ySurname}
                             gender={people.yGender}
                             birthday={people.yBirthday}
@@ -98,7 +101,7 @@ export default class Generator extends Component {
                             street={people.yStreet}
                             city={people.yCity}
                             id={people.yId}/>
-                </div> ));
+                ));
         }
 
         return (
@@ -108,11 +111,15 @@ export default class Generator extends Component {
                         <div className="header-text">Randomize</div>
                     </div>
                     <div className="backgroundFlexBox">
-                        <Button classN="button-clear" onclick={this.cleanClicked}><i className="fa fa-ellipsis-v"/></Button>
+                        <Button classN="button-random" onclick={this.cleanClicked}>
+                            <i className="fa fa-lg fa-apple"/>
+                        </Button>
                         <div className="flexbox style-1">
                             {people}
                         </div>
-                        <Button classN="button-random" onclick={this.addPersonClicked}><i className="fa fa-random"/></Button>
+                        <Button classN="button-random" onclick={this.addPersonClicked}>
+                            <i className="fa fa-lg fa-random"/>
+                        </Button>
                     </div>
                 </div>
             </header>

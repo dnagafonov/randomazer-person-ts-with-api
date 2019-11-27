@@ -1,6 +1,6 @@
 .header {
-    background-color: slategray;
-    color: #C9EEF7;
+    background-color: rgba(0,0,0, .9);
+    color: #b8b8b8;
     height: 60px;
     margin: 0;
     padding: auto;
@@ -14,8 +14,8 @@
     display: inline-block;
 }
 .header-text:hover{
-    color: #EBFAFF;
-    transition: all .5s ease;
+    color: #F5F5F5;
+    transition: all .9s ease;
 }
 
 .flexbox {
@@ -28,7 +28,7 @@
     border-top: 3px solid black;
     border-bottom: 3px solid black;
     box-sizing: border-box;
-    background-color: rgb(225,255,255);
+    background-color: rgba(0,0,0, .9);
     justify-content: center;
 }
 .backgroundFlexBox {
@@ -42,7 +42,8 @@
     background-repeat: no-repeat;
     background-size: cover;
     background-attachment: fixed;
-    background-image: url("../../pictures/color-strips-linii-background-fon.jpg");
+    background-color: rgba(0,0,0, .9);
+    background-image: url("../../images/manhattan.jpg");
 }
 
 .style-1::-webkit-scrollbar-track
@@ -59,6 +60,7 @@
 
 .style-1::-webkit-scrollbar-thumb
 {
-    background-color: #C9EEF7;
+    background-color: whitesmoke;
+    box-sizing: border-box;
     border: 1px solid black;
 }
